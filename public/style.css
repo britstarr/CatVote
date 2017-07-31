@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: #e6e6e6;
+}
+
+.header {
+  background: #b3b2b3;
+  height: 40px;
+  width: 100%;
+}
+
+.resultsLink {
+  float: right;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
