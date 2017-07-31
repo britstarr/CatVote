@@ -22,3 +22,29 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+
+.catDisplay {
+  height: 300px;
+  width: 250px;
+  margin: 20px;
+  text-align: center;
+  display: inline-block;
+  position:relative;
+}
+
+.rate p {
+  height: 10px;
+}
+
+.rateSlider {
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.faveBtn {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
