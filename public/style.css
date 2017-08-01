@@ -9,7 +9,7 @@ body {
 }
 
 .header {
-  background: #b3b2b3;
+  background: rgba(17, 17, 31, 0.76);
   height: 40px;
   width: 100%;
 }
@@ -32,15 +32,6 @@ body {
   position:relative;
 }
 
-.rate p {
-  /*height: 10px;*/
-}
-
-.rateSlider {
-  width: 85%;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .faveBtn {
   width: 100%;
@@ -54,11 +45,12 @@ body {
   height: 200px;
 }
 
-.showRating {
+.showRating{
   text-align: center;
 }
 
-.votedCatImg {
+.votedCatImg,
+.faveCatImg  {
   width: 220px;
   height: 235px;
 }

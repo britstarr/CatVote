@@ -5,7 +5,7 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 import key from '../_priv.js';
-import { getRandomCats, addCatVote, getVotedCats } from '../redux/actionCreators';
+import { getRandomCats, addCatVote, getVotedCats, getFaveData, addFave } from '../redux/actionCreators';
 
 class Home extends Component {
   constructor(props) {
@@ -22,7 +22,9 @@ class Home extends Component {
     }
 
     this.props.dispatch(getRandomCats());
+    // dispatching these two here just to make up for the slowness of using the proxy to load data
     this.props.dispatch(getVotedCats());
+    this.props.dispatch(getFaveData());
   }
 
   handleRating(cardData, event, rating) {
@@ -47,6 +49,12 @@ class Home extends Component {
     }
   }
 
+  faveCat(selectedImage) {
+    const imgID = selectedImage.match(/id\=(.*)\"></)[1].match(/.+?(?=")/)[0];
+    this.props.dispatch(addFave(imgID));
+    alert('Added to favorites');
+  }
+
   render() {
     return (
       this.props.catData.data
@@ -66,7 +74,7 @@ class Home extends Component {
                   </form>
                 </div>
                 <div className="fave" key={`fave{i}`}>
-                  <RaisedButton label="Favorite" secondary={true} className="faveBtn"/>
+                  <RaisedButton label="Favorite" secondary={true} className="faveBtn" onClick={this.faveCat.bind(this, image)}/>
                 </div>
               </Paper>
               : null

@@ -8,6 +8,7 @@ import store from '../redux/store';
 import Home from './Home';
 import Header from './Header';
 import Results from './Results';
+import Favorites from './Favorites';
 
 const App = () => {
   injectTapEventPlugin();
@@ -19,6 +20,7 @@ const App = () => {
             <Header />
             <Route exact path='/' component={Home} />
             <Route path='/results' component={Results} />
+            <Route path='/favorites' component={Favorites} />
           </div>
         </MuiThemeProvider>
       </Provider>
