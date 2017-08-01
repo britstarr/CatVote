@@ -12,4 +12,4 @@
 - `` npm install``
 - `` npm start``
 
-[apiLink] = http://thecatapi.com/docs.html;
+[apiLink]: http://thecatapi.com/docs.html
