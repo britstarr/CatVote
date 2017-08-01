@@ -15,23 +15,12 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    for (let i = 1; i <= 21; i++) {
-      this.setState({
-        [`value${i}`]: 0
-      });
+    if (!this.props.catData.data) {
+      this.props.dispatch(getRandomCats());
+      // dispatching these two here just to make up for the slowness of using the proxy to load data
+      this.props.dispatch(getVotedCats());
+      this.props.dispatch(getFaveData());
     }
-
-    this.props.dispatch(getRandomCats());
-    // dispatching these two here just to make up for the slowness of using the proxy to load data
-    this.props.dispatch(getVotedCats());
-    this.props.dispatch(getFaveData());
-  }
-
-  handleRating(cardData, event, rating) {
-    const rateCard = `value${cardData.id}`;
-    this.setState({
-      [rateCard]: rating+1
-    });
   }
 
   validateForm(voteData, event) {
