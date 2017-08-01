@@ -3,7 +3,7 @@
 - Obtain an API Key for [The Cat API][apiLink]
 - Name a file in the ROOT directory ``_priv``
 - Structure the file:
- - ``export default {
+  - ``export default {
       data: [API_KEY]
     }``
 
