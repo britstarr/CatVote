@@ -54,7 +54,15 @@ body {
   height: 200px;
 }
 
-.rateOptions {
-  width: 40%;
-  margin: 0 auto;
+.showRating {
+  text-align: center;
+}
+
+.votedCatImg {
+  width: 220px;
+  height: 235px;
+}
+
+.rating {
+  width: 10%;
 }

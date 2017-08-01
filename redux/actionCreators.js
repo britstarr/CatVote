@@ -1,11 +1,18 @@
-import { RATE_CAT, GET_RANDOM_CATS, HANDLE_RATING } from './actions';
+import { RATE_CAT, GET_RANDOM_CATS, GET_VOTED_CATS } from './actions';
 import axios from 'axios';
 import key from '../_priv.js';
 
 export function updateCatData(catData) {
   return {
     type: GET_RANDOM_CATS,
-    catData: catData
+    catData
+  }
+}
+
+export function updateVoteData(votedData) {
+  return {
+    type: GET_VOTED_CATS,
+    votedData
   }
 }
 
@@ -18,11 +25,26 @@ export function getRandomCats() {
   }
 }
 
-export function addCatVote(imageID, rating) {
+export function addCatVote(imgID, enteredRating) {
   return function(dispatch, getState) {
-    axios.post(`http://thecatapi.com/api/images/vote?api_key=${key}&image_id=${imageID}score=${rating}`)
-    .then(result => console.log(result))
-    // .then(data => dispatch(updateCatData(data)))
+   axios.post(`http://thecatapi.com/api/images/vote?api_key=${key.data}&image_id=${imgID}&score=${enteredRating}`)
+    .catch(err => console.log('error on data fetch', err));
+  }
+}
+
+export function getVotedCats() {
+  return function(dispatch, getState) {
+    axios.get(`https://crossorigin.me/http://thecatapi.com/api/images/getvotes?api_key=${key.data}`)
+    .then(voteData => {
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(voteData.data,"text/xml");
+      xmlDoc = Array.from(xmlDoc.documentElement.children[0].children[0].children);
+      return xmlDoc.map(item => {
+        const xmlText = new XMLSerializer().serializeToString(item);
+        return xmlText
+      });
+    })
+    .then(votedData => dispatch(updateVoteData(votedData)))
     .catch(err => console.log('error on data fetch', err));
   }
 }

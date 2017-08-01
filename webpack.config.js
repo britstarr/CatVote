@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './src/index.js',
+  entry: ['whatwg-fetch', './src/app.js'],
   devtool: 'eval',
   output: {
     path: path.join(__dirname, '/public'),
@@ -11,7 +11,19 @@ module.exports = {
   devServer: {
     publicPath: '/public/',
     watchContentBase: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    },
+    proxy: {
+      'http://thecatapi.com/api/images/**': {
+        target: 'http://thecatapi.com/api/images/',
+        secure: false,
+        changeOrigin: true
+      }
+    }
   },
   resolve: {
     extensions: ['.js', '.json']

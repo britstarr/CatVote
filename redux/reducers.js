@@ -1,7 +1,8 @@
-import { RATE_CAT, GET_RANDOM_CATS, HANDLE_RATING } from './actions.js';
+import { RATE_CAT, GET_RANDOM_CATS, GET_VOTED_CATS } from './actions.js';
 
 const DEFAULT_STATE = {
-  catData: {}
+  catData: {},
+  votedData: {}
 };
 
 const updateCatData = (state, action) => {
@@ -14,14 +15,24 @@ const updateCatData = (state, action) => {
   });
 };
 
+const updateVoteData = (state, action) => {
+  const newVotedData = Object.assign({}, state.votedData, {
+    data: action.votedData
+  });
+
+  return Object.assign({}, state, {
+    votedData: newVotedData
+  });
+};
+
 const rootReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case GET_RANDOM_CATS:
       return updateCatData(state, action);
     case RATE_CAT:
       return addNewRating(state, action);
-    case HANDLE_RATING:
-      return addNewRating(state, action);
+    case GET_VOTED_CATS:
+      return updateVoteData(state, action);
     default:
       return state;
   }
