@@ -19,17 +19,17 @@ class Results extends Component {
             return (
               <Paper className="catDisplay votedDisplay" key={`votedcat${i}`}>
                 <img src={url} alt='image of cat voted' className='votedCatImg'/>
-                <p className="showRating">You rate this a {rating}</p>
+                <p className="showRating">You rated this a {rating}</p>
                 {vote.rating}
               </Paper>
             );
           })}
         </div>
       : <div className="container">
-        {this.props.dispatch(getVotedCats())}
-        <h1>Vote Results</h1>
-        <p>You haven't voted on any cats yet! Go to the homepage and judge some furballs!</p>
-      </div>);
+          {this.props.dispatch(getVotedCats())}
+          <h1>Vote Results</h1>
+          <p>You haven't voted on any cats yet! Go to the homepage and judge some furballs!</p>
+        </div>);
   }
 }
 

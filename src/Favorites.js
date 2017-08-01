@@ -26,7 +26,8 @@ class Favorites extends Component {
         {this.props.dispatch(getVotedCats())}
         <h1>Favorites</h1>
         <p>You haven't set any cats as your favorites yet! Go to the homepage first and click favorite on some pictures.</p>
-      </div>);
+      </div>
+    );
   }
 }
 
