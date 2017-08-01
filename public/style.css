@@ -19,13 +19,13 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
 }
 
 .catDisplay {
-  height: 300px;
-  width: 250px;
+  height: 365px;
+  width: 270px;
   margin: 20px;
   text-align: center;
   display: inline-block;
@@ -33,7 +33,7 @@ body {
 }
 
 .rate p {
-  height: 10px;
+  /*height: 10px;*/
 }
 
 .rateSlider {
@@ -47,4 +47,14 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.catImg img {
+  width: 150px;
+  height: 200px;
+}
+
+.rateOptions {
+  width: 40%;
+  margin: 0 auto;
 }
